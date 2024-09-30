@@ -21,6 +21,7 @@ function createBoard(size) {
 
   for (let i = 0; i < numGrid; i++) {
     let grid = document.createElement("div");
+    grid.className = "squares";
     grid.style.border = "1px solid black";
     grid.style.backgroundColor = "#fff";
     grid.addEventListener("mouseover", colorSelector);
@@ -43,6 +44,11 @@ function colorSetter(colorSelection) {
   color = colorSelection;
 }
 
+function clear() {
+  let clear = document.querySelectorAll(".squares");
+  clear.forEach((div) => (div.style.backgroundColor = "white"));
+}
+
 createBoard(size);
 
 btn_small.addEventListener("click", function () {
@@ -63,4 +69,8 @@ btn_extra_large.addEventListener("click", function () {
 
 btn_eraser.addEventListener("click", function () {
   colorSetter("white");
+});
+
+btn_clear.addEventListener("click", function () {
+  clear();
 });
